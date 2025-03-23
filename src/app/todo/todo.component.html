@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+      <h2 class="text-center mb-4 text-primary">📋 Angular To-Do List</h2>
+      
+      <div class="input-group mb-3">
+        <input [(ngModel)]="newTask" type="text" class="form-control" placeholder="Enter a new task..." />
+        <button class="btn btn-success" (click)="addTask()">➕ Add Task</button>
+      </div>
+  
+      <ul class="list-group">
+        <li *ngFor="let task of tasks; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+          <span [class.completed]="task.completed" class="task-text">{{ task.name }}</span>
+  
+          <div>
+            <button *ngIf="!task.completed" class="btn btn-sm btn-outline-primary me-2" (click)="completeTask(i)">✔ Complete</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteTask(i)">❌ Delete</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
